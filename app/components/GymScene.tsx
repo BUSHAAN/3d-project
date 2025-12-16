@@ -10,7 +10,7 @@ export default function GymScene({ activeShot }) {
   return (
     <Canvas camera={{ position: [0, 1.6, 4], fov: 45 }}>
       <Suspense fallback={null}>
-        <ambientLight intensity={0.6} />
+        <ambientLight intensity={0.9} />
         <directionalLight position={[5, 5, 5]} intensity={1} />
 
         <CameraRig activeShot={activeShot} />

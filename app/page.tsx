@@ -1,10 +1,16 @@
-'use client'
+"use client";
 import ThreeDScene from "./components/GymScene";
 import { useEffect, useState } from "react";
 import GymScene from "./components/GymScene";
+import CenterContentSection from "./components/homeSections/CenterSection";
+import HeroSection from "./components/homeSections/Hero";
+import LeftContentSection from "./components/homeSections/LeftSection";
+import { motion } from "motion/react";
 
 export default function Home() {
   const [activeShot, setActiveShot] = useState(0);
+
+  const list = [HeroSection, LeftContentSection, CenterContentSection];
 
   useEffect(() => {
     const sections = document.querySelectorAll("[data-shot]");
@@ -26,13 +32,22 @@ export default function Home() {
 
   return (
     <>
-      <div className="fixed inset-0">
+      <div className="fixed bg-gray-300 -z-10 inset-0 pointer-events-none">
         <GymScene activeShot={activeShot} />
       </div>
-
-      <section data-shot="0" className="h-screen bg-amber-200" />
-      <section data-shot="1" className="h-screen bg-amber-300" />
-      <section data-shot="2" className="h-screen bg-amber-400" />
+      <div className="h-screen overflow-y-scroll snap-y snap-mandatory">
+        {list.map((Component, index) => (
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            animate={{animationDelay: `0.3s`}}
+            transition={{ duration: 0.5 }}
+            className=""
+          >
+            <Component key={index} />
+          </motion.div>
+        ))}
+      </div>
     </>
   );
 }
