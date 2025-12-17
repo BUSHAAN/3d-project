@@ -47,21 +47,14 @@ export default function Home() {
 
       <div className="h-screen overflow-y-scroll snap-y snap-mandatory">
         {list.map((Component, index) => (
-          <motion.div
+          <div
             key={index}
-            animate={
-              activeShot === index
-                ? { opacity: 1, y: 0 }
-                : { opacity: 0, y: 40 }
-            }
-            transition={{ duration: 0.6, ease: "easeOut" }}
             ref={(el) => {
               sectionsRef.current[index] = el;
             }}
-            className="h-screen snap-start"
           >
-            <Component />
-          </motion.div>
+            <Component isActive={activeShot === index} />
+          </div>
         ))}
       </div>
     </>
