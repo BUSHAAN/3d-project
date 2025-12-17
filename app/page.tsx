@@ -1,5 +1,4 @@
 "use client";
-import ThreeDScene from "./components/GymScene";
 import { useEffect, useRef, useState } from "react";
 import GymScene from "./components/GymScene";
 import CenterContentSection from "./components/homeSections/CenterSection";
@@ -10,16 +9,16 @@ import { motion } from "motion/react";
 export default function Home() {
   const [activeShot, setActiveShot] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  const sectionsRef = useRef([]);
+  const sectionsRef = useRef<Array<HTMLDivElement | null>>([]);
 
-  const snapTo = (index) => {
+  const snapTo = (index: number) => {
     if (isAnimating) return;
     if (index < 0 || index > sectionsRef.current.length - 1) return;
 
     setIsAnimating(true);
     setActiveShot(index);
 
-    sectionsRef.current[index].scrollIntoView({
+    sectionsRef.current[index]?.scrollIntoView({
       behavior: "smooth",
     });
 
@@ -30,7 +29,7 @@ export default function Home() {
   const list = [HeroSection, LeftContentSection, CenterContentSection];
 
   useEffect(() => {
-    const onWheel = (e) => {
+    const onWheel = (e: WheelEvent) => {
       e.preventDefault();
       if (e.deltaY > 0) snapTo(activeShot + 1);
       else snapTo(activeShot - 1);
@@ -56,7 +55,9 @@ export default function Home() {
                 : { opacity: 0, y: 40 }
             }
             transition={{ duration: 0.6, ease: "easeOut" }}
-            ref={(el) => (sectionsRef.current[index] = el)}
+            ref={(el) => {
+              sectionsRef.current[index] = el;
+            }}
             className="h-screen snap-start"
           >
             <Component />

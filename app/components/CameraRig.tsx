@@ -8,25 +8,61 @@ type CameraRigProps = {
   activeShot: number
 }
 
-const shots: { position: [number, number, number]; target: [number, number, number] }[] = [
-  { position: [0, 1.6, -2], target: [1, 1.4, 0] },
-  { position: [3.2, 1.5, 2.2], target: [2.2, 1.3, 0] },
-  { position: [-1.8, 1.7, -1.2], target: [0, 1.6, 0] }
+type Shot = {
+  position: [number, number, number]
+  target: [number, number, number]
+}
+
+const desktopShots: Shot[] = [
+  {
+    position: [0, 1.6, -2],
+    target: [1, 1.4, 0],
+  },
+  {
+    position: [3.2, 1.5, 2.2],
+    target: [2.2, 1.3, 0],
+  },
+  {
+    position: [-1.8, 1.7, -1.2],
+    target: [0, 1.6, 0],
+  },
 ]
 
-export default function CameraRig({ activeShot }: CameraRigProps) {
-  const { camera } = useThree()
+
+const mobileShots: Shot[] = [
+  {
+    position: [0, 1.6, -3],
+    target: [0, 1.4, 0],
+  },
+  {
+    position: [1.2, 1.5, 3],
+    target: [0.6, 1.3, 0],
+  },
+  {
+    position: [-1.2, 1.7, -2.6],
+    target: [0, 1.6, 0],
+  },
+]
+
+
+
+export default function CameraRig({ activeShot }:CameraRigProps) {
+  const { camera, size } = useThree()
 
   const currentPos = useRef(new Vector3())
   const currentTarget = useRef(new Vector3())
-
   const desiredPos = useRef(new Vector3())
   const desiredTarget = useRef(new Vector3())
 
+
   useEffect(() => {
-    desiredPos.current.set(...shots[activeShot].position)
-    desiredTarget.current.set(...shots[activeShot].target)
-  }, [activeShot])
+    const isMobile = size.width < 768
+    const shots = isMobile ? mobileShots : desktopShots
+    const shot = shots[activeShot]
+
+    desiredPos.current.set(...shot.position)
+    desiredTarget.current.set(...shot.target)
+  }, [activeShot, size.width])
 
   useFrame(() => {
     currentPos.current.lerp(desiredPos.current, 0.06)
