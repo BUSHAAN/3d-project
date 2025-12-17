@@ -4,13 +4,17 @@ import { useThree, useFrame } from "@react-three/fiber"
 import { Vector3 } from "three"
 import { useRef, useEffect } from "react"
 
-const shots = [
+type CameraRigProps = {
+  activeShot: number
+}
+
+const shots: { position: [number, number, number]; target: [number, number, number] }[] = [
   { position: [0, 1.6, -2], target: [1, 1.4, 0] },
   { position: [3.2, 1.5, 2.2], target: [2.2, 1.3, 0] },
   { position: [-1.8, 1.7, -1.2], target: [0, 1.6, 0] }
 ]
 
-export default function CameraRig({ activeShot }) {
+export default function CameraRig({ activeShot }: CameraRigProps) {
   const { camera } = useThree()
 
   const currentPos = useRef(new Vector3())

@@ -2,9 +2,9 @@ export default function HeroSection() {
   return (
     <section
       data-shot="0"
-      className="h-screen flex items-center bg-transparent  snap-start"
+      className="h-screen flex justify-center items-center bg-transparent snap-start"
     >
-      <div className="w-1/2 px-16">
+      <div className="md:w-1/2 px-16 text-center md:text-start"> 
         <h1 className="text-5xl font-bold mb-6">Build Real Strength</h1>
 
         <p className="text-lg mb-8">
