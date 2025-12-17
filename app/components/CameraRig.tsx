@@ -26,9 +26,9 @@ export default function CameraRig({ activeShot }) {
   useFrame(() => {
     const shot = shots[activeShot];
 
-    camera.position.lerp(new Vector3(...shot.position), 0.08);
+    camera.position.lerp(new Vector3(...shot.position), 0.04);
 
-    lookAtRef.current.lerp(new Vector3(...shot.target), 0.08);
+    lookAtRef.current.lerp(new Vector3(...shot.target), 0.04);
 
     camera.lookAt(lookAtRef.current);
   });

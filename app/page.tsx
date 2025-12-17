@@ -35,13 +35,14 @@ export default function Home() {
       <div className="fixed bg-gray-300 -z-10 inset-0 pointer-events-none">
         <GymScene activeShot={activeShot} />
       </div>
+      
       <div className="h-screen overflow-y-scroll snap-y snap-mandatory">
         {list.map((Component, index) => (
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            key={index}
+            initial={{ opacity: 0, y: -50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            animate={{animationDelay: `0.3s`}}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className=""
           >
             <Component key={index} />

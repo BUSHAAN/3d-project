@@ -6,7 +6,8 @@ import CameraRig from './CameraRig'
 import FitnessModel from './fitnessmodel'
 
 
-export default function GymScene({ activeShot }) {
+export default function 
+GymScene({ activeShot }) {
   return (
     <Canvas camera={{ position: [0, 1.6, 4], fov: 45 }}>
       <Suspense fallback={null}>
