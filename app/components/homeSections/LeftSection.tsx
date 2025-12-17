@@ -18,7 +18,7 @@ export default function LeftContentSection({
         {/* Left space for model */}
         <div className="md:w-1/2 hidden md:block" />
 
-        <div className="md:w-1/2 px-16 text-center md:text-start">
+        <div className="w-full md:w-1/2 px-16 text-center md:text-start">
           <h2 className="text-4xl font-semibold mb-6 left-">
             Sculpt Every Muscle
           </h2>
