@@ -8,7 +8,7 @@ export default function LeftContentSection({
   return (
     <section
       data-shot="1"
-      className="h-screen  bg-transparent text-black snap-start max-w-screen overflow-hidden"
+      className="h-screen  bg-transparent text-white snap-start max-w-screen overflow-hidden"
     >
       <motion.div
         animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
@@ -27,7 +27,7 @@ export default function LeftContentSection({
             Programs designed to target strength, balance, and control.
           </p>
 
-          <button className="px-6 py-3 border border-black rounded hover:bg-gray-200">
+          <button className="px-6 py-3 bg-[#fab804] text-black rounded hover:bg-gray-200">
             View Programs
           </button>
         </div>

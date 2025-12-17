@@ -8,7 +8,7 @@ export default function CenterContentSection({
   return (
     <section
       data-shot="2"
-      className=" px-12 h-screen bg-transparent text-black text-center snap-start"
+      className=" px-12 h-screen bg-transparent text-white text-center snap-start"
     >
       <motion.div
         animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
@@ -23,7 +23,7 @@ export default function CenterContentSection({
             control.
           </p>
 
-          <button className="px-6 py-3 bg-white text-black rounded hover:bg-gray-200">
+          <button className="px-6 py-3 bg-[#fab804] text-black rounded hover:bg-gray-200">
             Join Now
           </button>
         </div>
@@ -35,7 +35,7 @@ export default function CenterContentSection({
             control.
           </p>
 
-          <button className="px-6 py-3 bg-white text-black rounded hover:bg-gray-200">
+          <button className="px-6 py-3 bg-[#fab804] text-black rounded hover:bg-gray-200">
             Join Now
           </button>
         </div>

@@ -40,8 +40,8 @@ export default function Home() {
   }, [activeShot, isAnimating]);
 
   return (
-    <>
-      <div className="fixed bg-gray-300 -z-10 inset-0 pointer-events-none">
+    <div>
+      <div className="fixed -z-10 inset-0 pointer-events-none">
         <GymScene activeShot={activeShot} />
       </div>
 
@@ -57,6 +57,6 @@ export default function Home() {
           </div>
         ))}
       </div>
-    </>
+    </div>
   );
 }
