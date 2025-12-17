@@ -19,12 +19,12 @@ const desktopShots: Shot[] = [
     target: [1, 1.4, 0],
   },
   {
-    position: [3.2, 1.5, 2.2],
-    target: [2.2, 1.3, 0],
+    position: [2.0, 1.5, -3],
+    target: [-3, 1.0, 0],
   },
   {
-    position: [-1.8, 1.7, -1.2],
-    target: [0, 1.6, 0],
+    position: [-1.0, 1.7, -1.2],
+    target: [-0.15, 1.6, 0],
   },
 ]
 
@@ -35,8 +35,8 @@ const mobileShots: Shot[] = [
     target: [0, 1.4, 0],
   },
   {
-    position: [1.2, 1.5, 3],
-    target: [0.6, 1.3, 0],
+    position: [2.0, 1.5, -4],
+    target: [-1, 1.0, 0],
   },
   {
     position: [-1.2, 1.7, -2.6],
