@@ -56,7 +56,7 @@ export default function CameraRig({ activeShot }:CameraRigProps) {
 
 
   useEffect(() => {
-    const isMobile = size.width < 480
+    const isMobile = size.width < 768
     const shots = isMobile ? mobileShots : desktopShots
     const shot = shots[activeShot]
 

@@ -40,12 +40,12 @@ export default function Home() {
   }, [activeShot, isAnimating]);
 
   return (
-    <div>
-      <div className="fixed -z-10 inset-0 pointer-events-none">
+    <div >
+      <div className="fixed z-10 inset-0 pointer-events-none">
         <GymScene activeShot={activeShot} />
       </div>
 
-      <div className="h-screen overflow-y-scroll snap-y snap-mandatory">
+      <div className="relative h-screen z-100 overflow-y-scroll snap-y snap-mandatory">
         {list.map((Component, index) => (
           <div
             key={index}
