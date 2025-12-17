@@ -1,6 +1,6 @@
 "use client";
 import ThreeDScene from "./components/GymScene";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import GymScene from "./components/GymScene";
 import CenterContentSection from "./components/homeSections/CenterSection";
 import HeroSection from "./components/homeSections/Hero";
@@ -9,43 +9,57 @@ import { motion } from "motion/react";
 
 export default function Home() {
   const [activeShot, setActiveShot] = useState(0);
+  const [isAnimating, setIsAnimating] = useState(false);
+  const sectionsRef = useRef([]);
 
+  const snapTo = (index) => {
+    if (isAnimating) return;
+    if (index < 0 || index > sectionsRef.current.length - 1) return;
+
+    setIsAnimating(true);
+    setActiveShot(index);
+
+    sectionsRef.current[index].scrollIntoView({
+      behavior: "smooth",
+    });
+
+    setTimeout(() => {
+      setIsAnimating(false);
+    }, 900);
+  };
   const list = [HeroSection, LeftContentSection, CenterContentSection];
 
   useEffect(() => {
-    const sections = document.querySelectorAll("[data-shot]");
+    const onWheel = (e) => {
+      e.preventDefault();
+      if (e.deltaY > 0) snapTo(activeShot + 1);
+      else snapTo(activeShot - 1);
+    };
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveShot(Number(entry.target.dataset.shot));
-          }
-        });
-      },
-      { threshold: 0.7 }
-    );
-
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
-  }, []);
+    window.addEventListener("wheel", onWheel, { passive: false });
+    return () => window.removeEventListener("wheel", onWheel);
+  }, [activeShot, isAnimating]);
 
   return (
     <>
       <div className="fixed bg-gray-300 -z-10 inset-0 pointer-events-none">
         <GymScene activeShot={activeShot} />
       </div>
-      
+
       <div className="h-screen overflow-y-scroll snap-y snap-mandatory">
         {list.map((Component, index) => (
           <motion.div
             key={index}
-            initial={{ opacity: 0, y: -50 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            animate={
+              activeShot === index
+                ? { opacity: 1, y: 0 }
+                : { opacity: 0, y: 40 }
+            }
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className=""
+            ref={(el) => (sectionsRef.current[index] = el)}
+            className="h-screen snap-start"
           >
-            <Component key={index} />
+            <Component />
           </motion.div>
         ))}
       </div>

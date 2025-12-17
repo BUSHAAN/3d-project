@@ -1,37 +1,36 @@
-"use client";
+"use client"
 
-import { useThree, useFrame } from "@react-three/fiber";
-import { Vector3 } from "three";
-import { useRef } from "react";
+import { useThree, useFrame } from "@react-three/fiber"
+import { Vector3 } from "three"
+import { useRef, useEffect } from "react"
 
 const shots = [
-  {
-    position: [0, 1.6, -2],
-    target: [1, 1.4, 0],
-  },
-  {
-    position: [3.2, 1.5, 2.2],
-    target: [2.2, 1.3, 0],
-  },
-  {
-    position: [-1.8, 1.7, -1.2],
-    target: [0, 1.6, 0],
-  },
-];
+  { position: [0, 1.6, -2], target: [1, 1.4, 0] },
+  { position: [3.2, 1.5, 2.2], target: [2.2, 1.3, 0] },
+  { position: [-1.8, 1.7, -1.2], target: [0, 1.6, 0] }
+]
 
 export default function CameraRig({ activeShot }) {
-  const { camera } = useThree();
-  const lookAtRef = useRef(new Vector3());
+  const { camera } = useThree()
+
+  const currentPos = useRef(new Vector3())
+  const currentTarget = useRef(new Vector3())
+
+  const desiredPos = useRef(new Vector3())
+  const desiredTarget = useRef(new Vector3())
+
+  useEffect(() => {
+    desiredPos.current.set(...shots[activeShot].position)
+    desiredTarget.current.set(...shots[activeShot].target)
+  }, [activeShot])
 
   useFrame(() => {
-    const shot = shots[activeShot];
+    currentPos.current.lerp(desiredPos.current, 0.06)
+    currentTarget.current.lerp(desiredTarget.current, 0.06)
 
-    camera.position.lerp(new Vector3(...shot.position), 0.04);
+    camera.position.copy(currentPos.current)
+    camera.lookAt(currentTarget.current)
+  })
 
-    lookAtRef.current.lerp(new Vector3(...shot.target), 0.04);
-
-    camera.lookAt(lookAtRef.current);
-  });
-
-  return null;
+  return null
 }
