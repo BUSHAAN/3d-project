@@ -4,54 +4,58 @@ import GymScene from "./components/GymScene";
 import CenterContentSection from "./components/homeSections/CenterSection";
 import HeroSection from "./components/homeSections/Hero";
 import LeftContentSection from "./components/homeSections/LeftSection";
-import { motion } from "motion/react";
 
 export default function Home() {
   const [activeShot, setActiveShot] = useState(0);
-  const [isAnimating, setIsAnimating] = useState(false);
   const sectionsRef = useRef<Array<HTMLDivElement | null>>([]);
+  const scrollRef = useRef<HTMLDivElement | null>(null);
 
-  const snapTo = (index: number) => {
-    if (isAnimating) return;
-    if (index < 0 || index > sectionsRef.current.length - 1) return;
-
-    setIsAnimating(true);
-    setActiveShot(index);
-
-    sectionsRef.current[index]?.scrollIntoView({
-      behavior: "smooth",
-    });
-
-    setTimeout(() => {
-      setIsAnimating(false);
-    }, 900);
-  };
   const list = [HeroSection, LeftContentSection, CenterContentSection];
 
   useEffect(() => {
-    const onWheel = (e: WheelEvent) => {
-      e.preventDefault();
-      if (e.deltaY > 0) snapTo(activeShot + 1);
-      else snapTo(activeShot - 1);
-    };
+    const container = scrollRef.current;
+    if (!container) return;
 
-    window.addEventListener("wheel", onWheel, { passive: false });
-    return () => window.removeEventListener("wheel", onWheel);
-  }, [activeShot, isAnimating]);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Number(entry.target.getAttribute("data-index"));
+            setActiveShot(index);
+          }
+        });
+      },
+      {
+        root: container,
+        threshold: 0.6,
+      }
+    );
+
+    sectionsRef.current.forEach((section) => {
+      if (section) observer.observe(section);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <div >
+    <div>
       <div className="fixed z-10 inset-0 pointer-events-none">
         <GymScene activeShot={activeShot} />
       </div>
 
-      <div className="relative h-screen z-100 overflow-y-scroll snap-y snap-mandatory">
+      <div
+        className="relative h-screen z-100 overflow-y-scroll snap-y snap-mandatory"
+        ref={scrollRef}
+      >
         {list.map((Component, index) => (
           <div
             key={index}
+            data-index={index}
             ref={(el) => {
               sectionsRef.current[index] = el;
             }}
+            className="snap-start h-screen"
           >
             <Component isActive={activeShot === index} />
           </div>
