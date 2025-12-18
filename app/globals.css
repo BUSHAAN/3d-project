@@ -27,5 +27,10 @@ body {
 }
 
 @theme {
-  --color-adr-yellow: #F9E500;
+  --font-kanit: "Kanit", sans-serif;
+  --color-adr-yellow: #f9e500;
+}
+
+.font-kanit {
+  font-family: var(--font-kanit);
 }

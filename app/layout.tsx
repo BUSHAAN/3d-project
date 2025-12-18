@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Kanit } from "next/font/google";
 import "./globals.css";
 import Background from "./components/background";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
+});
+
+const kanit = Kanit({
+  variable: "--font-kanit",
+  subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
 const geistMono = Geist_Mono({
@@ -26,10 +32,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased relative overflow-hidden`}
+        className={`$ ${kanit.variable} font-kanit antialiased relative overflow-hidden`}
       >
         <div className="fixed inset-0 z-50 pointer-events-none overflow-hidden bg-[#0A0A0A]">
-          <div className="absolute top-[30%] left-[15%] -translate-x-1/2 -translate-y-1/2 scale-[15] opacity-20">
+          <div className="absolute top-[30%] right-[15%] -translate-x-1/2 -translate-y-1/2 scale-[15] opacity-20">
             <Background />
           </div>
         </div>

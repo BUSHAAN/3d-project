@@ -4,7 +4,7 @@ import { useGLTF, useAnimations } from "@react-three/drei";
 import { useEffect } from "react";
 
 export default function FitnessModel() {
-  const { scene, animations } = useGLTF("/models/LunaSnow2.glb");
+  const { scene, animations } = useGLTF("/models/fitness_guy.glb");
   const { actions } = useAnimations(animations, scene);
   useEffect(() => {
     actions?.idle?.play(); //check the animation name in the console log first

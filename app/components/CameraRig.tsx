@@ -15,32 +15,32 @@ type Shot = {
 
 const desktopShots: Shot[] = [
   {
-    position: [0, 1.6, -2],
-    target: [1, 1.4, 0],
+    position: [2, 0.4, 2.5],
+    target: [-2, 0, 0],
   },
   {
-    position: [2.0, 1.5, -3],
-    target: [-3, 1.0, 0],
+    position: [2, 1, -4],
+    target: [-3, -0.2, 0],
   },
   {
-    position: [-1.0, 1.7, -1.2],
-    target: [-0.15, 1.6, 0],
+    position: [-1.0, 0.5, 2],
+    target: [0.2, 0.4, 0],
   },
 ]
 
 
 const mobileShots: Shot[] = [
   {
-    position: [0, 1.6, -3],
-    target: [0, 1.4, 0],
+    position: [2.4, 0.3, 2],
+    target: [-1, 0, 0],
   },
   {
-    position: [2.0, 1.5, -4],
-    target: [-1, 1.0, 0],
+    position: [-1, 1, -4],
+    target: [-3, -0.2, 0],
   },
   {
-    position: [-1.2, 1.7, -2.6],
-    target: [0, 1.6, 0],
+    position: [-1.0, 0.5, 2],
+    target: [0.2, 0.4, 0],
   },
 ]
 

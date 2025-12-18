@@ -12,11 +12,11 @@ export default function HeroSection({ isActive }: { isActive: boolean }) {
         className="md:w-1/2 px-16 text-center md:text-start "
       >
         <h1 className="text-5xl font-bold mb-6 text-adr-yellow">
-          Build Real Strength
+          Unleash Your Strongest Self
         </h1>
 
         <p className="text-lg mb-8">
-          Train smarter, move better, and build a body that lasts.
+          Train smarter. Move better. Recover stronger.
         </p>
 
         <button
@@ -25,7 +25,7 @@ export default function HeroSection({ isActive }: { isActive: boolean }) {
             console.log("Get Started clicked");
           }}
         >
-          Start Training
+          Join Now
         </button>
       </motion.div>
 
