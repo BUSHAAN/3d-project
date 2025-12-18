@@ -23,7 +23,7 @@ export default function CenterContentSection({
             control.
           </p>
 
-          <button className="px-6 py-3 bg-[#fab804] text-black rounded hover:bg-gray-200">
+          <button className="px-6 py-3 bg-adr-yellow text-black rounded hover:bg-gray-200">
             Join Now
           </button>
         </div>
@@ -35,7 +35,7 @@ export default function CenterContentSection({
             control.
           </p>
 
-          <button className="px-6 py-3 bg-[#fab804] text-black rounded hover:bg-gray-200">
+          <button className="px-6 py-3 bg-adr-yellow text-black rounded hover:bg-gray-200">
             Join Now
           </button>
         </div>

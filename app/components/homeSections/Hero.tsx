@@ -11,7 +11,7 @@ export default function HeroSection({ isActive }: { isActive: boolean }) {
         transition={{ duration: 0.8, ease: "easeOut" }}
         className="md:w-1/2 px-16 text-center md:text-start "
       >
-        <h1 className="text-5xl font-bold mb-6 text-[#fab804]">
+        <h1 className="text-5xl font-bold mb-6 text-adr-yellow">
           Build Real Strength
         </h1>
 
@@ -20,7 +20,7 @@ export default function HeroSection({ isActive }: { isActive: boolean }) {
         </p>
 
         <button
-          className="px-6 py-3 border border-[#fab804] text-[#fab804] rounded  hover:bg-[#fab804] hover:text-black transition"
+          className="px-6 py-3 border border-adr-yellow text-adr-yellow rounded  hover:bg-adr-yellow hover:text-black transition"
           onClick={() => {
             console.log("Get Started clicked");
           }}

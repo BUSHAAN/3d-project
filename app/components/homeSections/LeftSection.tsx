@@ -27,7 +27,7 @@ export default function LeftContentSection({
             Programs designed to target strength, balance, and control.
           </p>
 
-          <button className="px-6 py-3 bg-[#fab804] text-black rounded hover:bg-gray-200">
+          <button className="px-6 py-3 bg-adr-yellow text-black rounded hover:bg-gray-200">
             View Programs
           </button>
         </div>
