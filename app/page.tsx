@@ -40,12 +40,12 @@ export default function Home() {
 
   return (
     <div>
-      <div className="fixed z-10 inset-0 pointer-events-none">
+      <div className="fixed z-100 inset-0 pointer-events-none">
         <GymScene activeShot={activeShot} />
       </div>
 
       <div
-        className="relative h-screen z-100 overflow-y-scroll snap-y snap-mandatory"
+        className="relative h-screen z-150 overflow-y-scroll snap-y snap-mandatory"
         ref={scrollRef}
       >
         {list.map((Component, index) => (

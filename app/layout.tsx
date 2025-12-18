@@ -28,8 +28,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased relative overflow-hidden`}
       >
-        <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-          <div className="absolute top-[30%] left-[15%] -translate-x-1/2 -translate-y-1/2 scale-[15] opacity-10">
+        <div className="fixed inset-0 z-50 pointer-events-none overflow-hidden bg-[#0A0A0A]">
+          <div className="absolute top-[30%] left-[15%] -translate-x-1/2 -translate-y-1/2 scale-[15] opacity-20">
             <Background />
           </div>
         </div>

@@ -3,7 +3,7 @@ import React from "react";
 const Background = () => {
   return (
     <svg
-      className="w-18 opacity-30"
+      className="w-18 opacity-23"
       viewBox="0 0 200 183"
       fill={"var(--color-adr-yellow)"}
       xmlns="http://www.w3.org/2000/svg"
