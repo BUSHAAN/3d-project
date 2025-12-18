@@ -55,7 +55,7 @@ export default function Home() {
             ref={(el) => {
               sectionsRef.current[index] = el;
             }}
-            className="snap-start h-screen"
+            className="snap-start h-screen max-w-7xl mx-auto"
           >
             <Component isActive={activeShot === index} />
           </div>

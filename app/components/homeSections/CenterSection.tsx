@@ -27,7 +27,7 @@ export default function CenterContentSection({
             Join Now
           </button>
         </div>
-        <div className="max-w-md ">
+        <div className="max-w-md text-center md:text-start">
           <h2 className="text-4xl font-semibold mb-6">Built for Performance</h2>
 
           <p className="text-lg mb-8">
