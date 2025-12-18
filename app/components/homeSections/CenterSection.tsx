@@ -8,7 +8,7 @@ export default function CenterContentSection({
   return (
     <section
       data-shot="2"
-      className=" px-12 h-screen bg-transparent text-white text-center snap-start"
+      className="h-lvh px-12 bg-transparent text-white text-center snap-start"
     >
       <motion.div
         animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}

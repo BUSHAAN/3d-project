@@ -8,7 +8,7 @@ export default function LeftContentSection({
   return (
     <section
       data-shot="1"
-      className="h-screen  bg-transparent text-white snap-start max-w-screen overflow-hidden"
+      className="h-lvh bg-transparent text-white snap-start max-w-screen overflow-hidden"
     >
       <motion.div
         animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}

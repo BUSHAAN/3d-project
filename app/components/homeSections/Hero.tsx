@@ -4,7 +4,7 @@ export default function HeroSection({ isActive }: { isActive: boolean }) {
   return (
     <section
       data-shot="0"
-      className="h-screen flex justify-center md:justify-start text-white items-center bg-transparent snap-start"
+      className="h-lvh flex justify-center md:justify-start text-white items-center bg-transparent snap-start"
     >
       <motion.div
         animate={isActive ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
